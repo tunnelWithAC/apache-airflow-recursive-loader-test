@@ -8,6 +8,8 @@ from airflow.models import DAG
 DAG_PATH = os.path.join(os.path.dirname(__file__), "..", "dags/**/*.py")
 DAG_FILES = glob.glob(DAG_PATH, recursive=True)
 
+
+## TODO create separate test files to demo pass and fail behaviour
 @pytest.mark.parametrize("dag_file", DAG_FILES)
 def test_dag_integrity(dag_file):
     module_name, _ = os.path.splitext(dag_file)
