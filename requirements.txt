@@ -59,8 +59,8 @@ gcloud-aio-auth==4.0.1
 gcloud-aio-bigquery==6.1.2
 gcloud-aio-storage==7.0.1
 google-ads==18.0.0
-google-api-core==2.8.2
-google-api-python-client==2.66.0
+google-api-core
+google-api-python-client
 google-auth==2.14.1
 google-auth-httplib2==0.1.0
 google-auth-oauthlib==0.7.1
