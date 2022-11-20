@@ -2,7 +2,7 @@
 on:
   push:
 jobs:
-  run-recursive-loader-test:
+  run-recursive-loader-test-valid-dags:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -16,4 +16,19 @@ jobs:
         pip install -r requirements.txt
     - name: Run tests
       run: |
-        pytest tests/recursive_integrity_test.py 
+        pytest tests/test_valid_dags.py
+  run-recursive-loader-test-invalid-dags:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run tests
+      run: |
+        pytest tests/test_invalid_dags.py 
