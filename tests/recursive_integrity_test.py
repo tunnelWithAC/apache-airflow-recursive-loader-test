@@ -4,7 +4,9 @@ import os
 import pytest
 
 from airflow.models import DAG
- 
+from airflow.utils.dag_cycle_tester import test_cycle as dag_test_cycle
+
+
 DAG_PATH = os.path.join(os.path.dirname(__file__), "..", "dags/**/*.py")
 DAG_FILES = glob.glob(DAG_PATH, recursive=True)
 
@@ -22,4 +24,5 @@ def test_dag_integrity(dag_file):
     
     for dag in dag_objects:
         # This function will throw an error and fail the test if all packages cannot be loaded
-        dag.test_cycle()
+        # dag.test_cycle()
+        dag_test_cycle(dag)
