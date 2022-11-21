@@ -2,7 +2,7 @@
 on:
   push:
 jobs:
-  run-recursive-loader-test-valid-dags:
+  test-valid-dags:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
@@ -17,7 +17,7 @@ jobs:
     - name: Run tests
       run: |
         pytest tests/test_valid_dags.py
-  run-recursive-loader-test-invalid-dags:
+  test-invalid-dags:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
