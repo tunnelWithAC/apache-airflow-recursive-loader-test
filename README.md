@@ -20,6 +20,10 @@ This is a simple test to run on a single Python file when making changes but it 
 This also helps in the case that multiple DAGs import functions or variables from a shared module and an engineer may only test the files that they have changed.
 
 
+#### PyTest
+
+The code block contains code to load all `DAG` objects with a directory and individually test that there are no issues when loading each DAG.
+
 ```python
 # tests/recursive_integrity_test.py
  
@@ -42,6 +46,39 @@ def test_dag_integrity(dag_file):
     # Individually test each DAG
     for dag in dag_objects:
         # This function will throw an error and fail the test if all packages cannot be loaded
-        dag.test_cycle()
+        dag_test_cycle(dag)
 
 ```
+
+You can run the test case above using PyTest with the following command
+
+```
+pytest tests/test_valid_dags.py
+```
+
+#### Github Actions
+
+The `pytest` command above can be used as part of a Github Action to automatically test DAGs on each push to Github.
+
+```
+on:
+  push:
+jobs:
+  test-valid-dags:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v1
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+    - name: Run tests
+      run: |
+        pytest tests/test_valid_dags.py
+```
+
+![Screenshot from 2022-11-23 10-19-52](https://user-images.githubusercontent.com/10425225/203522772-ab08585c-0c4d-49e3-85a4-c864fadbf15e.png)
