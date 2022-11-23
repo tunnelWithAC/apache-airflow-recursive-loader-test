@@ -81,4 +81,4 @@ jobs:
         pytest tests/test_valid_dags.py
 ```
 
-![Screenshot from 2022-11-23 10-19-52](https://user-images.githubusercontent.com/10425225/203522772-ab08585c-0c4d-49e3-85a4-c864fadbf15e.png)
+![Screenshot from 2022-11-23 10-19-52](https://user-images.githubusercontent.com/10425225/203523970-e298cbba-0be6-4258-82a7-7563e6e95975.png)
